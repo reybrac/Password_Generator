@@ -10,42 +10,54 @@ var randomFunc = {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+    var password = generatePassword();
+    var passwordText = document.querySelector('#password');
 
-  passwordText.value = password;
+    passwordText.value = password;
 }
 
 function generatePassword(lower, upper, number, symbol) {
-  // prompt to ask about how many characters
-  var pwlength = parseInt(prompt('How many chars?'));
-  console.log(typeof pwlength);
-  console.log();
+    // prompt to ask about how many characters
+    var pwlength = parseInt(prompt('How many chars?'));
+    console.log(typeof pwlength);
+    console.log();
 
-  // prompt to ask about using numbers
-  var useNumbers = confirm('Do you want to use numbers?');
-  console.log(useNumbers);
-  
-  // prompt to ask about using lower case
-  var useLowerCase = confirm('Do you want to use lower case?');
-  console.log(useLowerCase);
-  
-  // prompt to ask about using Upper case
-  var useUpperCase = confirm('Do you want to use Upper case?');
-  console.log(useUpperCase);
+    let generatedPassword = "";
 
-  // prompt to ask about using Upper case
-  var useSpecialChar = confirm('Do you want to use special characters?');
-  console.log(useSpecialChar);
+    // prompt to ask about using numbers
+    var useNumbers = confirm('Do you want to use numbers?');
+    console.log(useNumbers);
+    
+    // prompt to ask about using lower case
+    var useLowerCase = confirm('Do you want to use lower case?');
+    console.log(useLowerCase);
+    
+    // prompt to ask about using Upper case
+    var useUpperCase = confirm('Do you want to use Upper case?');
+    console.log(useUpperCase);
 
-  if(useNumbers === true && useSpecialChar === true && useSpecialChar === true && useUpperCase == true){
-    randomFunc = lower + upper + number + symbol;
-    return randomFunc;
-  }else{
-    var generatedPassword = lower + upper;
-    return generatedPassword;
+    // prompt to ask about using Upper case
+    var useSpecialChar = confirm('Do you want to use special characters?');
+    console.log(useSpecialChar);
+    
+    var typesCount = lower + upper + number + symbol;
+
+    var typesArr = [{lower} + {upper} + {number} + {symbol}].filter(item => Object.values(item)[0]);
+
+    if(typesCount === 0){
+    return '';
     }
+        for(let i=0; i < pwlength; i += typesCount){
+            typesArr.forEach(type =>{
+                var funcName = Object.keys(type)[0];
+                console.log('funcName: ' , funcName);
 
+                generatedPassword = generatedPassword + randomFunc[funcName]();
+            });
+    }
+      
+    var finalPassword = (generatedPassword.slice(0, pwlength));
+    return finalPassword;
   
 }
 
