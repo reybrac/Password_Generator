@@ -18,7 +18,7 @@ function writePassword() {
 }
 
 function generatePassword() {
-    var pwlength = parseInt(prompt('How many chars?'));
+    var pwlength = parseInt(prompt('How many chararcters long do you want your password to be (must be between 8 and 128 characters long?'));
     console.log(typeof pwlength);
     console.log();
     //checks that the value entered is valid. Not blank and not a letter
@@ -54,29 +54,7 @@ function generatePassword() {
         alert ("please select at least one type of character");
     
     }else{
-    // if(confirmNumber == true && confirmLowerCase == true && confirmUpperCase == true && confirmSymbols == true){
-    //     var chars = numbers + lowerCase + upperCase + symbols ;
-    //     var pass = "";
-    //     for (var x = 0; x < pwlength; x++) {
-    //         var i = Math.floor(Math.random() * chars.length);
-    //         pass += chars.charAt(i);
-    //     }
-    // }else if(confirmNumber == true && confirmLowerCase == true && confirmUpperCase == true && confirmSymbols == false){
-    //     var chars = numbers + lowerCase + upperCase ;
-    //     var pass = "";
-    //     for (var x = 0; x < pwlength; x++) {
-    //         var i = Math.floor(Math.random() * chars.length);
-    //         pass += chars.charAt(i);       
-    //     }
-    //  } else if(confirmNumber == true && confirmLowerCase == true && confirmUpperCase == false && confirmSymbols == false){
-    //     var chars = numbers + lowerCase;
-    //     var pass = "";
-    //     for (var x = 0; x < pwlength; x++) {
-    //         var i = Math.floor(Math.random() * chars.length);
-    //         pass += chars.charAt(i);       
-    //     }
-    //  } else {
-        //while(confirmLowerCase == true || confirmNumber == true || confirmSymbols == true || confirmUpperCase == true){
+   
         if(confirmUpperCase == true){
             confirmUpperCase = upperCase;
         }else{
