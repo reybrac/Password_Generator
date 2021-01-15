@@ -28,7 +28,7 @@ There were several hurdles with getting the password to generate. Started with g
 #### Installation-Deployment
 Copy the link and paste it to your browser to install and deploy it. 
 
-https://reybrac.github.io/Password_Generator.html
+https://reybrac.github.io/Password_Generator
 
 
 ##### Future_scope
