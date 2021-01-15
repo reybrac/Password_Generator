@@ -1,18 +1,7 @@
-// prompt to ask about using numbers
-var useNumbers = confirm('Do you want to use numbers?');
-console.log(useNumbers);
-
-// prompt to ask about using lower case
-var useLowerCase = confirm('Do you want to use lower case?');
-console.log(useLowerCase);
-
-// prompt to ask about using Upper case
-var useUpperCase = confirm('Do you want to use Upper case?');
-console.log(useUpperCase);
-
-// prompt to ask about using Upper case
-var useSpecialChar = confirm('Do you want to use special characters?');
-console.log(useSpecialChar);
+var useNumbers = "";
+var useLowerCase = "";
+var useUpperCase = "";
+var useSpecialChar = "";
 // Assignment Code
 var generateBtn = document.querySelector('#generate');
 
@@ -23,52 +12,80 @@ var randomFunc = {
   symbol: getRandomSymbol
 };
 
-// Write password to the #password input
-function writePassword() {
-    var hasLower = (useLowerCase = true);
-    var hasUpper = (useUpperCase = true);
-    var hasNumber = (useNumbers = true);
-    var hasSymbol = (useSpecialChar = true);
+// Add event listener to generate button
+generateBtn.addEventListener('click', () =>{
+    
+    var hasLower = (useLowerCase === true);
+    var hasUpper = (useUpperCase === true);
+    var hasNumber = (useNumbers === true);
+    var hasSymbol = (useSpecialChar === true);
+
     var password = generatePassword(
         hasLower,
         hasUpper,
         hasNumber,
-        hasSymbol
+        hasSymbol,
+        length
     );
-    var passwordText = document.querySelector('#password');
+});
 
-    passwordText.value = password;
-}
+// Write password to the #password input
+//function writePassword() {}
+
 
 function generatePassword(lower, upper, number, symbol) {
     // prompt to ask about how many characters
     var pwlength = parseInt(prompt('How many chars?'));
     console.log(typeof pwlength);
-    console.log();
+    // prompt to ask about using numbers
+    var useNumbers = confirm('Do you want to use numbers?');
+    console.log('useNumbers: ', useNumbers);
+    
+    // prompt to ask about using lower case
+    var useLowerCase = confirm('Do you want to use lower case?');
+    console.log('useLowerCase: ',useLowerCase);
+    
+    // prompt to ask about using Upper case
+    var useUpperCase = confirm('Do you want to use Upper case?');
+    console.log('useUpperCase: ', useUpperCase);
+    
+    // prompt to ask about using Special character
+    var useSpecialChar = confirm('Do you want to use special characters?');
+    console.log('useSpecialChar: ' , useSpecialChar);
+
+    var length = +pwlength.value;
 
     let generatedPassword = "";
     
-    var typesCount = lower + upper + number + symbol;
+    // var typesCount = lower + upper + number + symbol;
 
-    var typesArr = [{lower} + {upper} + {number} + {symbol}].filter(item => Object.values(item)[0]);
+    // var typesArr = [{lower} + {upper} + {number} + {symbol}].filter
+    // (item => Object.values(item)[0]);
 
-    console.log('tyesArr: ', typesArr);
+    // console.log('typesArr: ', typesArr);
 
-    if(typesCount === 0){
-        return 'what did you do?';
-    }
-    for(let i=0; i < pwlength; i += typesCount){
-        typesArr.forEach(type =>{
-            var funcName = Object.keys(type)[0];
-            console.log('funcName: ' , funcName);
+    // if(typesCount == 0){
+    //     return 'what did you do?';
+    // }
+    for(let i=0; i < length; i += typesCount){
+        // typesArr.forEach(type => {
+        //     var funcName = Object.keys(type)[0];
+        //     console.log('funcName: ' , funcName);
 
-            generatedPassword = generatedPassword + randomFunc[funcName]();
-        });
-    }
+            generatedPassword = generatedPassword + randomFunc;
+            console.log(generatedPassword);
+        
+
+        var finalPassword = (generatedPassword.slice(0, pwlength));
+        var passwordText = document.querySelector('#password');
+        passwordText.value = password;
+        return "hello"; 
+    };
       
-    var finalPassword = (generatedPassword.slice(0, pwlength));
-    return "good";
-    console.log(generatedPassword.slice(0, pwlength));
+    
+
+
+    
 }
 
 
@@ -95,5 +112,3 @@ function getRandomUpper() {
 }
 
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
