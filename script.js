@@ -4,10 +4,9 @@ var symbols = "!@#$%^&*(){}[]=<>?,.";
 var numbers = "1234567890";
 var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var confirmNumber;
-var confirmLowerCase;
-var confirmUpperCase;
-var confirmSymbols;
+
+// Add event listener to generate button
+generateBtn.addEventListener('click', writePassword);
 
 // Write password to the #password input
 function writePassword() {
@@ -30,152 +29,91 @@ function generatePassword() {
         alert ("Password length needs to be between 8 and 128 characters");
     //generates the random password
     }else{
-        confirmNumber =confirm("Will this contain numbers?");
-        confirmLowerCase =confirm("Will this contain lower case letters?");
-        confirmUpperCase =confirm("Will this contain Upper case letters?");
-        confirmSymbols =confirm("Will this contain symbols?");
+        var confirmNumber =confirm("Will this contain numbers?");
+            if(confirmNumber == true){
+                alert("You selected yes to numbers");
+            }
+        var confirmLowerCase =confirm("Will this contain lower case letters?");
+            if(confirmLowerCase == true){
+                alert("You selected yes to lower case letters");
+            }
+        var confirmUpperCase =confirm("Will this contain Upper case letters?");
+            if(confirmUpperCase == true){
+                alert("You selected yes to Upper case letters");
+            }
+        var confirmSymbols =confirm("Will this contain symbols?");
+            if(confirmSymbols == true){
+                alert("You selected yes to Symbols");
+            }
     }   
     var typesCount = confirmNumber + confirmLowerCase + confirmUpperCase + confirmSymbols;
         console.log('typesCount: ' , typesCount);
-        
+        console.log(confirmNumber, confirmLowerCase, confirmUpperCase, confirmSymbols);
+      
     if(typesCount === 0){
         alert ("please select at least one type of character");
+    
     }else{
+    // if(confirmNumber == true && confirmLowerCase == true && confirmUpperCase == true && confirmSymbols == true){
+    //     var chars = numbers + lowerCase + upperCase + symbols ;
+    //     var pass = "";
+    //     for (var x = 0; x < pwlength; x++) {
+    //         var i = Math.floor(Math.random() * chars.length);
+    //         pass += chars.charAt(i);
+    //     }
+    // }else if(confirmNumber == true && confirmLowerCase == true && confirmUpperCase == true && confirmSymbols == false){
+    //     var chars = numbers + lowerCase + upperCase ;
+    //     var pass = "";
+    //     for (var x = 0; x < pwlength; x++) {
+    //         var i = Math.floor(Math.random() * chars.length);
+    //         pass += chars.charAt(i);       
+    //     }
+    //  } else if(confirmNumber == true && confirmLowerCase == true && confirmUpperCase == false && confirmSymbols == false){
+    //     var chars = numbers + lowerCase;
+    //     var pass = "";
+    //     for (var x = 0; x < pwlength; x++) {
+    //         var i = Math.floor(Math.random() * chars.length);
+    //         pass += chars.charAt(i);       
+    //     }
+    //  } else {
+        //while(confirmLowerCase == true || confirmNumber == true || confirmSymbols == true || confirmUpperCase == true){
+        if(confirmUpperCase == true){
+            confirmUpperCase = upperCase;
+        }else{
+            confirmUpperCase = "";
+        }
+        if(confirmLowerCase == true){
+            confirmLowerCase = lowerCase;
+        }else{
+            confirmLowerCase = "";
+        }
+        if(confirmSymbols == true){
+            confirmSymbols = symbols;
+        }else{
+            confirmSymbols = "";
+        }
+        if(confirmNumber == true){
+            confirmNumber = numbers;
+        }else{
+            confirmNumber = "";
+        }
+        var chars = confirmNumber + confirmLowerCase + confirmUpperCase + confirmSymbols;
+        console.log('chars: ', chars);
 
-        
-
-        var typesArr = [confirmNumber + confirmLowerCase + confirmUpperCase + confirmSymbols];
-        console.log('typesArr: ', typesArr);
-
-        console.log(confirmNumber, confirmLowerCase, confirmUpperCase, confirmSymbols);
-        var chars = symbols + numbers + lowerCase + upperCase;
         var pass = "";
         for (var x = 0; x < pwlength; x++) {
-            var i = Math.floor(Math.random() * chars.length);
-            pass += chars.charAt(i);
+        var i = Math.floor(Math.random() * chars.length);
+        pass += chars.charAt(i);
         }
+               
+        }
+    //}
         console.log(pass);
         return pass;
-    }  
+      
     
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
 
 
 
-
-// var useNumbers = "";
-// var useLowerCase = "";
-// var useUpperCase = "";
-// var useSpecialChar = "";
-// // Assignment Code
-// var generateBtn = document.querySelector('#generate');
-
-// var randomFunc = {
-//   lower: getRandomLower,
-//   upper: getRandomUpper,
-//   number: getRandomNumber,
-//   symbol: getRandomSymbol
-// };
-
-// // Add event listener to generate button
-// generateBtn.addEventListener('click', () =>{
-    
-//     var hasLower = (useLowerCase === true);
-//     var hasUpper = (useUpperCase === true);
-//     var hasNumber = (useNumbers === true);
-//     var hasSymbol = (useSpecialChar === true);
-
-//     var password = generatePassword(
-//         hasLower,
-//         hasUpper,
-//         hasNumber,
-//         hasSymbol,
-//         length
-//     );
-// });
-
-// // Write password to the #password input
-// //function writePassword() {}
-
-
-// function generatePassword(lower, upper, number, symbol) {
-//     // prompt to ask about how many characters
-//     var pwlength = parseInt(prompt('How many chars?'));
-//     console.log(typeof pwlength);
-//     // prompt to ask about using numbers
-//     var useNumbers = confirm('Do you want to use numbers?');
-//     console.log('useNumbers: ', useNumbers);
-    
-//     // prompt to ask about using lower case
-//     var useLowerCase = confirm('Do you want to use lower case?');
-//     console.log('useLowerCase: ',useLowerCase);
-    
-//     // prompt to ask about using Upper case
-//     var useUpperCase = confirm('Do you want to use Upper case?');
-//     console.log('useUpperCase: ', useUpperCase);
-    
-//     // prompt to ask about using Special character
-//     var useSpecialChar = confirm('Do you want to use special characters?');
-//     console.log('useSpecialChar: ' , useSpecialChar);
-
-//     var length = +pwlength.value;
-
-//     let generatedPassword = "";
-    
-//     var typesCount = lower + upper + number + symbol;
-
-//     var typesArr = [{lower} + {upper} + {number} + {symbol}].filter
-//     (item => Object.values(item)[0]);
-
-//     console.log('typesArr: ', typesArr);
-
-//     if(typesCount == 0){
-//         return 'what did you do?';
-//     }
-//     for(let i=0; i < length; i += typesCount){
-//         typesArr.forEach(type => {
-//             var funcName = Object.keys(type)[0];
-//             console.log('funcName: ' , funcName);
-
-//             generatedPassword = generatedPassword + randomFunc;
-//             console.log(generatedPassword);
-        
-
-//         var finalPassword = (generatedPassword.slice(0, pwlength));
-//         var passwordText = document.querySelector('#password');
-//         passwordText.value = password;
-//         return "hello"; 
-//         });
-//     }
-      
-    
-
-
-    
-// }
-
-
-// //functions
-// function getRandomNumber() {
-//   var numbers = "1234567890";
-  
-//   return numbers[Math.floor(Math.random()*numbers.length)];
-// }
-// function getRandomSymbol() {
-//   var symbols = "!@#$%^&*(){}[]=<>?,.";
-  
-//   return symbols[Math.floor(Math.random()*symbols.length)];
-// }
-// function getRandomLower() {
-//   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
-  
-//   return lowerCase[Math.floor(Math.random()*lowerCase.length)];
-// }
-// function getRandomUpper() {
-//   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  
-//   return upperCase[Math.floor(Math.random()*upperCase.length)];
-// }
