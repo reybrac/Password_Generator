@@ -1,5 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector('#generate');
+var symbols = "!@#$%^&*(){}[]=<>?,.";
+var numbers = "1234567890";
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var confirmNumber;
+var confirmLowerCase;
+var confirmUpperCase;
+var confirmSymbols;
 
 // Write password to the #password input
 function writePassword() {
@@ -14,13 +22,33 @@ function generatePassword() {
     var pwlength = parseInt(prompt('How many chars?'));
     console.log(typeof pwlength);
     console.log();
+    //checks that the value entered is valid. Not blank and not a letter
     if(!pwlength){
         alert("Please enter a valid value");
+    //check that the number entered is between 8 and 128
     }else if(pwlength <8 || pwlength > 128){
         alert ("Password length needs to be between 8 and 128 characters");
+    //generates the random password
+    }else{
+        confirmNumber =confirm("Will this contain numbers?");
+        confirmLowerCase =confirm("Will this contain lower case letters?");
+        confirmUpperCase =confirm("Will this contain Upper case letters?");
+        confirmSymbols =confirm("Will this contain symbols?");
+    }   
+    var typesCount = confirmNumber + confirmLowerCase + confirmUpperCase + confirmSymbols;
+        console.log('typesCount: ' , typesCount);
+        
+    if(typesCount === 0){
+        alert ("please select at least one type of character");
     }else{
 
-        var chars = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()-+<>ABCDEFGHIJKLMNOP1234567890";
+        
+
+        var typesArr = [confirmNumber + confirmLowerCase + confirmUpperCase + confirmSymbols];
+        console.log('typesArr: ', typesArr);
+
+        console.log(confirmNumber, confirmLowerCase, confirmUpperCase, confirmSymbols);
+        var chars = symbols + numbers + lowerCase + upperCase;
         var pass = "";
         for (var x = 0; x < pwlength; x++) {
             var i = Math.floor(Math.random() * chars.length);
@@ -28,8 +56,8 @@ function generatePassword() {
         }
         console.log(pass);
         return pass;
-        
-    }
+    }  
+    
 }
 
 // Add event listener to generate button
