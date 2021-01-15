@@ -23,7 +23,7 @@ There were several hurdles with getting the password to generate. Started with g
 
 
 ### Screenshot
-![alt text](https://github.com/reybrac/reybrac.github.io/blob/main/Assets/Images/Reybrac.github.io.JPG?raw=true)
+![alt text](https://github.com/reybrac/Password_Generator/blob/main/Assets/Password-generator.JPG?raw=true)
 
 #### Installation-Deployment
 Copy the link and paste it to your browser to install and deploy it. 
